@@ -1,0 +1,4 @@
+这是客户端一个普普通通的文本文件
+Hello World!
+My name is xm;
+!!!!!!!!!
