@@ -23,10 +23,16 @@ public class ClientDemo {
             bw.flush();
 
         }
-        //接收反馈
-        line = brServer.readLine();
-        System.out.println(line);
+        //传输结束标志
+//        bw.write("end");
+//        bw.newLine();
+//        bw.flush();
+        s.shutdownOutput();//结束标志
 
+        //接收反馈
+        while ((line = brServer.readLine())!= null) {
+            System.out.println(line);
+        }
         s.close();
         br.close();
     }

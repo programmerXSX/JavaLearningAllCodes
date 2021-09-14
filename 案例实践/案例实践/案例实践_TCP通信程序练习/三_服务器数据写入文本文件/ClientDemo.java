@@ -38,6 +38,5 @@ public class ClientDemo {
 
         //释放资源
         s.close();
-
     }
 }

@@ -19,12 +19,29 @@ public class ServerDemo {
         bwClient.newLine();
         bwClient.flush();
         String line;
+
+        /*
+        虽然这里写了当br.readline()!= null时,程序退出，
+        但是当客户端读取的数据当为null时，客户端程序退出，就无法发送null信息给服务器
+        因此我们需要在客户端传输数据时最后加上一个结束标志
+        除了自定义标志外，Socket提供了shutdownOutput方法作为结束标志
+         */
         while ((line = br.readLine()) != null) {
+            //判断结束退出标志
+//            if (line.equals("end")){
+//                break;
+//            }
             //将文件储存在Server.txt中
             bw.write(line);
             bw.newLine();
             bw.flush();
         }
+        System.out.println("jieshu");
+        //给出反馈
+        bwClient.write("对方已接收");
+        bwClient.newLine();
+        bwClient.flush();
+        s.shutdownOutput();
         //释放资源
         bw.close();
         ss.close();
